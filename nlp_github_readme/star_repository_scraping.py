@@ -11,16 +11,21 @@ def scraping_star_repo():
   list_repo_link = []
   for link in star_repo:
     repo_link = link.a.get('href')
-    repo_github_link = 'https://github.com/hikaruya8{}'.format(repo_link)
+    repo_github_link = 'https://github.com{}'.format(repo_link)
     list_repo_link.append(repo_github_link)
   return list_repo_link
 
 def scraping_ptag():
-  r = requests.get(target_url2)         #requestsを使って、webから取得
-  soup = BeautifulSoup(r.text, 'lxml') #要素を抽出
+  for x in range(5):
+    if x == 1:
+      break
+    print(x)
+    for target_url2 in scraping_star_repo():
+      l = requests.get(target_url2)         #requestsを使って、webから取得
+      soup = BeautifulSoup(l.text, 'lxml') #要素を抽出
+      readme_text = soup.find("article", attrs={"class":"markdown-body"}) #readme抽出
+      readme_p = readme_text.find_all("p") #readme内のpタグテキスト全部抽出
+      for p in readme_p:
+        print(p.text)
 
-  readme_text = soup.find("article", attrs={"class":"markdown-body"}) #readme抽出
-  readme_p = readme_text.find_all("p") #readme内のpタグテキスト全部抽出
-  for p in readme_p:
-      print(p.text)
-
+scraping_ptag()
