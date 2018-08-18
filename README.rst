@@ -9,7 +9,6 @@ This is using Natural Language Processing and Machine Learning.
 Recuirements: requests, BeautifulSoup
 
 
-tree_structure
 .
 ├── LICENSE
 ├── MANIFEST.in
