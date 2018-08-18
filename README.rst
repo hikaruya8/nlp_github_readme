@@ -1,4 +1,4 @@
-Sample Module Repository
+Calculate the Standard Score of the GitHub user
 ========================
 
 In development
