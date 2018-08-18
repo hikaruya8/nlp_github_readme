@@ -12,13 +12,14 @@ with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='sample',
+    name='nlp_github_readme',
     version='0.1.0',
-    description='Sample package for Python-Guide.org',
+    description='In development    NLP_GitHub_README -- Calculate the Standard Score of the GitHub user by using Natural Language Processing and Machine Learning',
     long_description=readme,
-    author='Kenneth Reitz',
-    author_email='me@kennethreitz.com',
-    url='https://github.com/kennethreitz/samplemod',
+    author='hikaruya8',
+    author_email='h.yamada.bg@gmail.com',
+    install_requires=['requests, BeautifulSoup'],
+    url='https://github.com/hikaruya8/nlp_github_readme',
     license=license,
     packages=find_packages(exclude=('tests', 'docs'))
 )
