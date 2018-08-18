@@ -8,10 +8,12 @@ def scraping_star_repo():
   soup = BeautifulSoup(r.text, 'lxml') #要素を抽出
 
   star_repo = soup.find_all("div", attrs={"class":"d-inline-block mb-1"}) #starされたリポジトリ抽出
+  list_repo_link = []
   for link in star_repo:
     repo_link = link.a.get('href')
     repo_github_link = 'https://github.com/hikaruya8{}'.format(repo_link)
-    return repo_github_link
+    list_repo_link.append(repo_github_link)
+  return list_repo_link
 
 def scraping_ptag():
   r = requests.get(target_url2)         #requestsを使って、webから取得
@@ -22,6 +24,3 @@ def scraping_ptag():
   for p in readme_p:
       print(p.text)
 
-scraping_star_repo()
-target_url2 = scraping_star_repo()
-scraping_ptag()
