@@ -1,12 +1,31 @@
 Sample Module Repository
 ========================
 
-This simple project is an example repo for Python projects.
+In development
 
-`Learn more <http://www.kennethreitz.org/essays/repository-structure-and-python>`_.
+NLP_GitHub_README -- Calculate the Standard Score of the GitHub user.
+This is using Natural Language Processing and Machine Learning.
 
+Recuirements: requests, BeautifulSoup
+
+
+tree_structure
+.
+├── LICENSE
+├── MANIFEST.in
+├── Makefile
+├── README.rst
+├── docs
+│   ├── Makefile
+│   ├── conf.py
+│   ├── index.rst
+│   └── make.bat
+├── nlp_github_readme
+├── requirements.txt
+├── setup.py
+└── tests
+    ├── __init__.py
+    ├── context.py
+    ├── test_advanced.py
+    └── test_basic.py
 ---------------
-
-If you want to learn more about ``setup.py`` files, check out `this repository <https://github.com/kennethreitz/setup.py>`_.
-
-✨🍰✨

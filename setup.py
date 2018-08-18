@@ -14,7 +14,7 @@ with open('LICENSE') as f:
 setup(
     name='nlp_github_readme',
     version='0.1.0',
-    description='In development    NLP_GitHub_README -- Calculate the Standard Score of the GitHub user by using Natural Language Processing and Machine Learning',
+    description='NLP_GitHub_README -- Calculate the Standard Score of the GitHub user by using Natural Language Processing and Machine Learning',
     long_description=readme,
     author='hikaruya8',
     author_email='h.yamada.bg@gmail.com',
