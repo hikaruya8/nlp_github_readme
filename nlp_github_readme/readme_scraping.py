@@ -9,7 +9,9 @@ def scraping_ptag():
 
   readme_text = soup.find("article", attrs={"class":"markdown-body"}) #readme抽出
   readme_p = readme_text.find_all("p") #readme内のpタグテキスト全部抽出
-  for p in readme_p:
-      print(p.text)
+  for n,p in enumerate(readme_p):
+      print(n, p.text)
+      # if n ==3: #止めたい時
+      #   break
 
 scraping_ptag()

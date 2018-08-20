@@ -16,16 +16,14 @@ def scraping_star_repo():
   return list_repo_link
 
 def scraping_ptag():
-  for x in range(5):
-    if x == 1:
-      break
-    print(x)
-    for target_url2 in scraping_star_repo():
+    for n, target_url2 in enumerate(scraping_star_repo()):
       l = requests.get(target_url2)         #requestsを使って、webから取得
       soup = BeautifulSoup(l.text, 'lxml') #要素を抽出
       readme_text = soup.find("article", attrs={"class":"markdown-body"}) #readme抽出
       readme_p = readme_text.find_all("p") #readme内のpタグテキスト全部抽出
-      for p in readme_p:
-        print(p.text)
+      if n == 4: #どこかでスクレイピング止めたい時 default=4, スター5個分できる
+        break
+      for m,p in enumerate(readme_p):
+        print(m, p.text)
 
 scraping_ptag()
