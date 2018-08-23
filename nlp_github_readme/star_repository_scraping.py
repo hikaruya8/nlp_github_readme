@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import nltk
 
 target_url = 'https://github.com/hikaruya8?tab=stars' #取得したいURL入力
 
@@ -16,14 +17,24 @@ def scraping_star_repo():
   return list_repo_link
 
 def scraping_ptag():
-    for n, target_url2 in enumerate(scraping_star_repo()):
-      l = requests.get(target_url2)         #requestsを使って、webから取得
-      soup = BeautifulSoup(l.text, 'lxml') #要素を抽出
-      readme_text = soup.find("article", attrs={"class":"markdown-body"}) #readme抽出
-      readme_p = readme_text.find_all("p") #readme内のpタグテキスト全部抽出
-      if n == 1: #どこかでスクレイピング止めたい時 default=4, スター5個分できる
-        break
-      for m,p in enumerate(readme_p):
-        print(m, p.text)
+  list_url = []
+  for n, target_url2 in enumerate(scraping_star_repo()):
+    l = requests.get(target_url2)         #requestsを使って、webから取得
+    soup = BeautifulSoup(l.text, 'lxml') #要素を抽出
+    readme_text = soup.find("article", attrs={"class":"markdown-body"}) #readme抽出
+    readme_p = readme_text.find_all("p") #readme内のpタグテキスト全部抽出
+    if n == 1: #どこかでスクレイピング止めたい時 default=4, スター5個分できる
+      break
+    for p in readme_p:
+      list_url.append(p.text)
+  return list_url
 
-scraping_ptag()
+def tokenize():
+  tokens = scraping_ptag()
+  for t in tokens:
+    words_split = nltk.word_tokenize(t)
+    print(words_split)
+    words_tag = nltk.pos_tag(words_split)
+    print(words_tag)
+
+tokenize()
