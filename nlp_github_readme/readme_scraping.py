@@ -11,19 +11,22 @@ def scraping_ptag():
   readme_text = soup.find("article", attrs={"class":"markdown-body"}) #readme抽出
   readme_p = readme_text.find_all("p") #readme内のpタグテキスト全部抽出
   list_url = []
-  for p in readme_p:
+  for p in readme_p: #readme textリスト化
     list_url.append(p.text)
   return list_url
   # for n,p in enumerate(readme_p):
-      # print(n, p.text)
-      # if n ==3: #止めたい時
-      #   break
+  #   print(p.text)
+    # if n ==3: #止めたい時
+    #   break
 
 def tokenize():
-  tokens = nltk.word_tokenize(scraping_ptag())
-  text = nltk.Text(tokens)
+  tokens = scraping_ptag()
+  for t in tokens:
+    words_split = nltk.word_tokenize(t)
+    print(words_split)
+    words_tag = nltk.pos_tag(words_split)
+    print(words_tag)
 
-scraping_ptag()
-# tokenize()
+tokenize()
 
 
