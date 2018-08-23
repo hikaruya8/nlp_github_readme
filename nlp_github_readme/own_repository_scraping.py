@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import nltk
 
-target_url = 'https://github.com/hikaruya8?tab=stars' #取得したいURL入力
+target_url = 'https://github.com/hikaruya8?tab=repositories' #取得したいURL入力
 
 def scraping_star_repo():
   r = requests.get(target_url)         #requestsを使って、webから取得
@@ -23,7 +23,7 @@ def scraping_ptag():
     soup = BeautifulSoup(l.text, 'lxml') #要素を抽出
     readme_text = soup.find("article", attrs={"class":"markdown-body"}) #readme抽出
     readme_p = readme_text.find_all("p") #readme内のpタグテキスト全部抽出
-    if n == 1: #どこかでスクレイピング止めたい時 default=4, スター5個分できる
+    if n == 3: #どこかでスクレイピング止めたい時
       break
     for p in readme_p:
       list_url.append(p.text)
