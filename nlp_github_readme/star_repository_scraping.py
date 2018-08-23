@@ -21,7 +21,7 @@ def scraping_ptag():
       soup = BeautifulSoup(l.text, 'lxml') #要素を抽出
       readme_text = soup.find("article", attrs={"class":"markdown-body"}) #readme抽出
       readme_p = readme_text.find_all("p") #readme内のpタグテキスト全部抽出
-      if n == 4: #どこかでスクレイピング止めたい時 default=4, スター5個分できる
+      if n == 1: #どこかでスクレイピング止めたい時 default=4, スター5個分できる
         break
       for m,p in enumerate(readme_p):
         print(m, p.text)
